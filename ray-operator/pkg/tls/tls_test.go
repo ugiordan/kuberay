@@ -180,12 +180,14 @@ func TestResolve(t *testing.T) {
 		objects            []runtime.Object
 		wantErr            bool
 		wantProfileFetched bool
+		initialMinVersion  uint16
 		wantMinVersion     uint16
 		wantNilCiphers     bool
 	}{
 		{
 			name:               "APIServer not found falls back to Intermediate",
 			wantProfileFetched: false,
+			initialMinVersion:  tls.VersionTLS13,
 			wantMinVersion:     tls.VersionTLS12,
 		},
 		{
@@ -201,6 +203,7 @@ func TestResolve(t *testing.T) {
 				},
 			},
 			wantProfileFetched: true,
+			initialMinVersion:  tls.VersionTLS12,
 			wantMinVersion:     tls.VersionTLS13,
 			wantNilCiphers:     true,
 		},
@@ -228,7 +231,7 @@ func TestResolve(t *testing.T) {
 			if len(result.TLSOpts) == 0 {
 				t.Error("TLSOpts should not be empty")
 			}
-			cfg := &tls.Config{} //nolint:gosec // intentionally empty, TLSOpts will set MinVersion
+			cfg := &tls.Config{MinVersion: tt.initialMinVersion}
 			for _, fn := range result.TLSOpts {
 				fn(cfg)
 			}
