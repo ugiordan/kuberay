@@ -13,7 +13,7 @@ require (
 	github.com/kr/pretty v0.3.1
 	github.com/onsi/ginkgo/v2 v2.27.3
 	github.com/onsi/gomega v1.38.3
-	github.com/openshift/api v0.0.0-20251214014457-bfa868a22401
+	github.com/openshift/api v0.0.0-20260317165824-54a3998d81eb
 	github.com/orcaman/concurrent-map/v2 v2.0.1
 	github.com/prometheus/client_golang v1.23.2
 	github.com/robfig/cron/v3 v3.0.1
@@ -24,8 +24,8 @@ require (
 	go.uber.org/zap v1.27.1
 	golang.org/x/sync v0.20.0
 	gopkg.in/natefinch/lumberjack.v2 v2.2.1
-	k8s.io/api v0.35.0
-	k8s.io/apimachinery v0.35.0
+	k8s.io/api v0.35.1
+	k8s.io/apimachinery v0.35.1
 	k8s.io/apiserver v0.34.3
 	k8s.io/client-go v0.35.0
 	k8s.io/code-generator v0.35.0
